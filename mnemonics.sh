@@ -43,10 +43,10 @@ if [[ $1 -eq "" ]]; then
 fi
 
 if [[ $2 -eq "" ]]; then
-    generate_word "$1" | grep -E "^[a-z]+$"
+    generate_word "$1" | grep -E "^[a-z çğıöşü]+$"
 else
     len_str=$(echo $2 | cut -d "," -f 1)
     len_end=$(echo $2 | cut -d "," -f 2)
-    generate_word "$1" | grep -E "^[a-z]+$" | grep -xE ".{$len_str,$len_end}" |
+    generate_word "$1" | grep -E "^[a-z çğıöşü]+$" | grep -xE ".{$len_str,$len_end}" |
         awk '{ print length($0) " " $0; }' | sort -r -n | cut -d ' ' -f 2-
 fi
